@@ -1,0 +1,44 @@
+show databases;
+use sql_intro;
+
+show tables;
+
+create table employees (Emp_Id int primary key, Emp_name varchar(25),
+Age int, Gender char(1), Doj date, Dept varchar(20), City varchar(25),
+Salary float);
+
+describe employees;
+
+insert into employees values
+(101,"Jimmy", 35, "M", "2005-05-30","Sales" ,"Chicago", 70000),
+(102,"Shane", 30, "M", "1999-06-25","Marketing", "Seattle", 55000),
+(103,"Marry", 28, "F", "2009-03-10","Product", "Boston", 62000),
+(104,"Dwayne", 37, "M", "2011-07-12", "Tech", "Austin", 57000),
+(105,"Sara", 32, "F", "2017-10-27", "Sales", "New York", 72000),
+(106,"Ammy", 35, "F", "2014-12-20", "Tech", "Seattle", 80000);
+
+select * from  employees;
+
+select distinct Dept from employees;
+
+select avg(Age) from employees;
+
+-- to find verage age of employees in each department
+
+select Dept, avg(Salary) from employees group by dept;
+
+select count(Emp_Id), City from employees group by City
+order by count(Emp_Id) desc;
+
+select count(Emp_Id), City from employees group by City
+order by count(Emp_Id);
+
+-- find the employee joined each year
+
+select year(Doj) as year, count(Emp_Id) from employees group by year(Doj);
+
+--  we can also use group by to join one or more table together
+-- using command like below:
+-- select product_id, sum(sell_price * quantity) as revenue from sales group by product_id;
+
+

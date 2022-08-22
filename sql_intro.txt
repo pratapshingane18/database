@@ -1,0 +1,95 @@
+show databases;
+use mysql;
+show tables;
+select * from component;
+describe component;
+create database sql_intro;
+show databases;
+create table emp_details (Name varchar(25), Age int, sec char(1),doj date, city varchar(24),salary float);
+describe emp_details;
+-- insert into emp_details
+-- values("prat",21,"M","2001-11-14","Sangli",250000.00),
+-- ("Aman",20,"F","2002-10-12","Nagpur",280000.05);
+
+insert into emp_details
+values("Jimmy", 35, "M", "2005-05-30", "Chicago", 70000),
+("Shane", 30, "M", "1999-06-25", "Seattle", 55000),
+("Marry", 28, "F", "2009-03-10", "Boston", 62000),
+("Dwayne", 37, "M", "2011-07-12", "Austin", 57000),
+("Sara", 32, "F", "2017-10-27", "New York", 72000),
+("Ammy", 35, "F", "2014-12-20", "Seattle", 80000);
+
+
+select * from emp_details;
+
+select distinct city from emp_details;
+
+select count(name) from emp_details;
+
+select count(name) as count_name from emp_details;
+
+select sum(salary) from emp_details;
+
+select avg(salary) from emp_details;
+
+
+select name, age, city from emp_details;
+
+select * from emp_details where age > 30;
+
+select * from emp_details where sec = "F";
+
+select * from emp_details where city = 'Chicago' or city = 'Austin';
+
+select * from emp_details where city in ('Chicago','Austin');
+
+select * from emp_details where doj between '2007-01-01' and '2016-01-01';
+
+select * from emp_details where age>30 and sec="M";
+
+select sec, sum(salary) as total_salary from emp_details group by sec;
+
+-- sort in term of salary
+
+select * from emp_details order by salary desc;
+
+select (10+20) as addition;
+
+select length('India') as total_len;
+
+select repeat('@',100);
+
+select upper('India');
+
+select day(curdate());
+
+select now();
+
+-- String Function
+select lcase('INDIA') as lowercase;
+
+-- How to apply this on tables
+
+select Name, character_length(Name) as NameLength from emp_details;
+
+select concat((Name), " is" , " good boi") as merged from emp_details;
+
+select sec, Name, concat(sec, " is gender of ", Name) as genderandname from emp_details;
+
+select reverse('India');
+
+select reverse(Name) from emp_details;
+
+select replace("Swapnil is a boy", "boy","Girl");
+
+select ltrim("    India      ");
+select length("    India      ");
+select length(ltrim("    India      "));
+
+-- similry we can use right trim to delete spaces from right side 
+
+
+select position("fruit" in "orange is a nice fruit") as posi;
+
+select ascii('a');
+select ascii('4');
